@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The World, Curated by AI | Global Travel Authority Hub</title>
+    <meta name="description" content="Authority guides for the modern traveler. Real data. Real luxury. Zero fluff.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: '#FAF8F5',
+                        'sand-dark': '#F0EDE8',
+                        navy: '#1B2A4A',
+                        'navy-light': '#2C3E6B',
+                        gold: '#C9A96E',
+                        'gold-light': '#D4BC8B',
+                        'gold-dark': '#B8944F',
+                    },
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [dir="rtl"] { font-family: 'Inter', sans-serif; }
+        [dir="rtl"] .font-display { font-family: 'Playfair Display', serif; }
+
+        .card-hover { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); }
+        .card-hover:hover .card-overlay { opacity: 0.4; }
+        .card-hover:hover .card-cta { opacity: 1; transform: translateY(0); }
+
+        .card-overlay { transition: opacity 0.5s ease; }
+        .card-cta { opacity: 0; transform: translateY(10px); transition: all 0.4s ease 0.1s; }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .gold-line { background: linear-gradient(90deg, transparent, #C9A96E, transparent); }
+
+        .badge-pulse { animation: pulse-gold 2s infinite; }
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(201, 169, 110, 0); }
+        }
+
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-sand text-navy font-body antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-sand/90 backdrop-blur-md border-b border-sand-dark/50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="font-display text-xl md:text-2xl font-semibold tracking-tight">
+                <span class="text-navy" data-en="Travel Authority" data-he="סמכות נסיעות">Travel Authority</span>
+                <span class="text-gold">.</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <a href="#destinations" class="hidden md:inline text-sm font-medium text-navy/70 hover:text-navy transition-colors" data-en="Destinations" data-he="יעדים">Destinations</a>
+                <a href="#expert" class="hidden md:inline text-sm font-medium text-navy/70 hover:text-navy transition-colors" data-en="AI Expert" data-he="מומחה AI">AI Expert</a>
+                <!-- Language Toggle -->
+                <button id="langToggle" onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-navy/15 hover:border-gold/50 transition-all text-sm font-medium">
+                    <span id="langLabel">EN</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center hero-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-sand"></div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
+            <div class="fade-in">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-medium tracking-widest uppercase mb-8">
+                    <span class="w-2 h-2 rounded-full bg-gold badge-pulse"></span>
+                    <span data-en="Portfolio — 2 Live Destinations" data-he="תיק עבודות — 2 יעדים פעילים">Portfolio — 2 Live Destinations</span>
+                </div>
+            </div>
+            <h1 class="fade-in font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-6" data-en="The World, Curated by AI" data-he="העולם, באוצרות AI">
+                The World,<br>Curated by AI
+            </h1>
+            <p class="fade-in text-lg md:text-xl text-white/80 font-light max-w-2xl mx-auto mb-10 leading-relaxed" data-en="Authority guides for the modern traveler. Real data. Real luxury. Zero fluff." data-he="מדריכים סמכותיים למטייל המודרני. מידע אמיתי. יוקרה אמיתית. בלי מילוי.">
+                Authority guides for the modern traveler.<br>Real data. Real luxury. Zero fluff.
+            </p>
+            <a href="#destinations" class="fade-in inline-flex items-center gap-3 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-gold/25">
+                <span data-en="Explore Destinations" data-he="גלו יעדים">Explore Destinations</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+            <span class="text-xs tracking-widest uppercase">Scroll</span>
+            <div class="w-px h-10 bg-gradient-to-b from-white/40 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section id="destinations" class="py-24 md:py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-gold text-sm font-medium tracking-widest uppercase" data-en="Live Destinations" data-he="יעדים פעילים">Live Destinations</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mt-3 mb-4" data-en="Where We Take You" data-he="לאן ניקח אתכם">Where We Take You</h2>
+                <div class="gold-line h-px w-24 mx-auto mb-6"></div>
+                <p class="text-navy/60 max-w-lg mx-auto" data-en="Each destination is a complete authority guide — researched, curated, and maintained by AI." data-he="כל יעד הוא מדריך סמכותי מלא — נחקר, אוצר ומתוחזק על ידי AI.">Each destination is a complete authority guide — researched, curated, and maintained by AI.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Card 1: Bohol -->
+                <a href="https://robertog62.github.io/bohol-authority-site/" target="_blank" class="group card-hover block relative rounded-2xl overflow-hidden shadow-lg shadow-navy/5 aspect-[4/5] md:aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1570789210967-2cac24f99c8e?w=800&q=80" alt="Bohol, Philippines" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="card-overlay absolute inset-0 bg-navy/50"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"></div>
+                    <!-- Live Badge -->
+                    <div class="absolute top-6 left-6 rtl:left-auto rtl:right-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 badge-pulse"></span>
+                        <span class="text-white text-xs font-semibold tracking-wider uppercase">Live</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <span class="text-gold text-xs font-semibold tracking-widest uppercase" data-en="Philippines · Southeast Asia" data-he="פיליפינים · דרום-מזרח אסיה">Philippines · Southeast Asia</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-2 mb-3" data-en="Bohol Insider" data-he="בוהול אינסיידר">Bohol Insider</h3>
+                        <p class="text-white/75 text-sm leading-relaxed mb-6" data-en="Pristine beaches, Chocolate Hills, and tarsier sanctuaries. The Philippines' best-kept island secret — now revealed with precision." data-he="חופים בתוליים, גבעות השוקולד ושמורות הטרסייר. הסוד הכי שמור של הפיליפינים — חשוף עכשיו בדיוק.">Pristine beaches, Chocolate Hills, and tarsier sanctuaries. The Philippines' best-kept island secret — now revealed with precision.</p>
+                        <div class="card-cta inline-flex items-center gap-2 text-gold font-medium text-sm">
+                            <span data-en="Explore Guide" data-he="גלו את המדריך">Explore Guide</span>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Dubai & Abu Dhabi -->
+                <a href="https://robertog62.github.io/dubai-authority-site/" target="_blank" class="group card-hover block relative rounded-2xl overflow-hidden shadow-lg shadow-navy/5 aspect-[4/5] md:aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Dubai & Abu Dhabi" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="card-overlay absolute inset-0 bg-navy/50"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"></div>
+                    <!-- Live Badge -->
+                    <div class="absolute top-6 left-6 rtl:left-auto rtl:right-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 badge-pulse"></span>
+                        <span class="text-white text-xs font-semibold tracking-wider uppercase">Live</span>
+                    </div>
+                    <!-- Content -->
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <span class="text-gold text-xs font-semibold tracking-widest uppercase" data-en="UAE · Middle East" data-he="איחוד האמירויות · המזרח התיכון">UAE · Middle East</span>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold text-white mt-2 mb-3" data-en="Dubai & Abu Dhabi Insider" data-he="דובאי ואבו דאבי אינסיידר">Dubai & Abu Dhabi Insider</h3>
+                        <p class="text-white/75 text-sm leading-relaxed mb-6" data-en="Where desert meets ultramodern luxury. Iconic skylines, world-class dining, and experiences money can't buy — but our guide can unlock." data-he="המקום בו המדבר פוגש יוקרה אולטרה-מודרנית. קווי רקיע איקוניים, מסעדות ברמה עולמית וחוויות שכסף לא יכול לקנות — אבל המדריך שלנו יכול לפתוח.">Where desert meets ultramodern luxury. Iconic skylines, world-class dining, and experiences money can't buy — but our guide can unlock.</p>
+                        <div class="card-cta inline-flex items-center gap-2 text-gold font-medium text-sm">
+                            <span data-en="Explore Guide" data-he="גלו את המדריך">Explore Guide</span>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Coming Soon teaser -->
+            <div class="text-center mt-16 fade-in">
+                <p class="text-navy/40 text-sm tracking-wider uppercase" data-en="More destinations coming soon" data-he="עוד יעדים בקרוב">More destinations coming soon</p>
+                <div class="flex justify-center gap-2 mt-4">
+                    <span class="w-2 h-2 rounded-full bg-navy/10"></span>
+                    <span class="w-2 h-2 rounded-full bg-navy/10"></span>
+                    <span class="w-2 h-2 rounded-full bg-navy/10"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Expert Section -->
+    <section id="expert" class="py-24 md:py-32 bg-navy text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <span class="text-gold text-sm font-medium tracking-widest uppercase" data-en="AI-Powered Intelligence" data-he="מונע על ידי AI">AI-Powered Intelligence</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mt-3 mb-6 leading-tight" data-en="Your 24/7 Travel Expert" data-he="מומחה הנסיעות שלכם 24/7">Your 24/7<br>Travel Expert</h2>
+                    <div class="h-px w-16 bg-gold mb-8"></div>
+                    <p class="text-white/70 leading-relaxed mb-6" data-en="Every destination guide is backed by a specialized AI notebook — powered by Google's NotebookLM. Ask it anything: restaurant picks, hidden gems, transport hacks, or cultural protocols." data-he="כל מדריך יעד מגובה על ידי מחברת AI מתמחה — מונע על ידי NotebookLM של גוגל. שאלו כל דבר: המלצות מסעדות, פנינים נסתרות, טיפים לתחבורה, או פרוטוקולים תרבותיים.">Every destination guide is backed by a specialized AI notebook — powered by Google's NotebookLM. Ask it anything: restaurant picks, hidden gems, transport hacks, or cultural protocols.</p>
+                    <p class="text-white/70 leading-relaxed mb-10" data-en="It doesn't hallucinate. It only answers from verified, curated research — the same data our guides are built on." data-he="הוא לא ממציא. הוא עונה רק ממחקר מאומת ומאוצר — אותו מידע שעליו המדריכים שלנו בנויים.">It doesn't hallucinate. It only answers from verified, curated research — the same data our guides are built on.</p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <span class="text-white/80" data-en="Source-Grounded Answers" data-he="תשובות מבוססות מקור">Source-Grounded Answers</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <span class="text-white/80" data-en="Available 24/7" data-he="זמין 24/7">Available 24/7</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                            </div>
+                            <span class="text-white/80" data-en="Multilingual Support" data-he="תמיכה רב-לשונית">Multilingual Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual element -->
+                <div class="fade-in relative">
+                    <div class="relative bg-navy-light/50 rounded-2xl border border-white/10 p-8 backdrop-blur-sm">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-3 h-3 rounded-full bg-gold"></div>
+                            <span class="text-white/50 text-xs font-medium tracking-wider uppercase">NotebookLM Expert</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                                <p class="text-white/40 text-xs mb-2">You asked:</p>
+                                <p class="text-white/90 text-sm" data-en="What's the best time to visit the Chocolate Hills in Bohol?" data-he="מה הזמן הכי טוב לבקר בגבעות השוקולד בבוהול?">"What's the best time to visit the Chocolate Hills in Bohol?"</p>
+                            </div>
+                            <div class="bg-gold/10 rounded-xl p-4 border border-gold/20">
+                                <p class="text-gold text-xs mb-2">AI Expert:</p>
+                                <p class="text-white/80 text-sm leading-relaxed" data-en="Based on the research data: Visit between February–May during the dry season when the hills turn their iconic chocolate brown. Early morning (6-7 AM) offers the best light for photography and fewer crowds. Source: Bohol Tourism Research, 2024." data-he="בהתבסס על נתוני המחקר: בקרו בין פברואר-מאי בעונה היבשה כשהגבעות מקבלות את צבע השוקולד האיקוני שלהן. הבוקר המוקדם (6-7) מציע את התאורה הטובה ביותר לצילום ופחות המונים. מקור: מחקר תיירות בוהול, 2024.">"Based on the research data: Visit between February–May during the dry season when the hills turn their iconic chocolate brown. Early morning (6-7 AM) offers the best light for photography and fewer crowds. <em class='text-gold/80'>Source: Bohol Tourism Research, 2024.</em>"</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex items-center gap-2 text-white/30 text-xs">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span data-en="Answers grounded in curated sources only" data-he="תשובות מבוססות על מקורות מאוצרים בלבד">Answers grounded in curated sources only</span>
+                        </div>
+                    </div>
+                    <!-- Decorative glow -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-gold/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-gold/5 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Trust Bar -->
+    <section class="py-16 bg-sand-dark border-y border-navy/5">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-navy">2</div>
+                    <div class="text-navy/50 text-sm mt-1" data-en="Live Guides" data-he="מדריכים פעילים">Live Guides</div>
+                </div>
+                <div class="fade-in">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-navy">24/7</div>
+                    <div class="text-navy/50 text-sm mt-1" data-en="AI Support" data-he="תמיכת AI">AI Support</div>
+                </div>
+                <div class="fade-in">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-navy">2</div>
+                    <div class="text-navy/50 text-sm mt-1" data-en="Continents Covered" data-he="יבשות מכוסות">Continents Covered</div>
+                </div>
+                <div class="fade-in">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-navy">∞</div>
+                    <div class="text-navy/50 text-sm mt-1" data-en="Data-Backed Answers" data-he="תשובות מבוססות נתונים">Data-Backed Answers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="font-display text-2xl font-semibold mb-2">
+                <span class="text-navy">Travel Authority</span><span class="text-gold">.</span>
+            </div>
+            <p class="text-navy/40 text-sm mb-8" data-en="The world's most authoritative AI-curated travel guides." data-he="מדריכי הטיול המוסמכים ביותר בעולם, באוצרות AI.">The world's most authoritative AI-curated travel guides.</p>
+            <div class="flex justify-center gap-8 text-sm text-navy/50">
+                <a href="https://robertog62.github.io/bohol-authority-site/" target="_blank" class="hover:text-gold transition-colors">Bohol</a>
+                <a href="https://robertog62.github.io/dubai-authority-site/" target="_blank" class="hover:text-gold transition-colors">Dubai & Abu Dhabi</a>
+            </div>
+            <div class="gold-line h-px w-32 mx-auto my-8"></div>
+            <p class="text-navy/30 text-xs">&copy; 2026 Travel Authority Hub. All guides AI-curated with human oversight.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'he' : 'en';
+            const html = document.documentElement;
+            html.lang = currentLang === 'he' ? 'he' : 'en';
+            html.dir = currentLang === 'he' ? 'rtl' : 'ltr';
+            document.getElementById('langLabel').textContent = currentLang === 'he' ? 'HE' : 'EN';
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else {
+                        el.innerHTML = text;
+                    }
+                }
+            });
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
